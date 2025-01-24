@@ -2,19 +2,27 @@ name: Merge-Tests
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 env:
+  PAYLOAD_TEMPLATE: "{ \"gitHub\": { \"owner\": \"sankar7466\", \"repo\": \"Reflect\", \"sha\": \"SHA_PLACEHOLDER\" } }"
   KEY_HEADER: "X-API-KEY: tHyCZqoH2yap6fXheRYVg4F4RKSgEk6R11zZkLNy"
-  PAYLOAD: "{ \"gitHub\": { \"owner\": \"sankar7466\", \"repo\": \"Reflect\", \"sha\": \"${{ github.event.pull_request.head.sha }}\" } }"
 
 jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set Payload with SHA
+        run: echo "PAYLOAD=${PAYLOAD_TEMPLATE/SHA_PLACEHOLDER/${{ github.event.head_commit.id }}}" >> $GITHUB_ENV
+
       - name: Run Reflect tests
-        run: curl
-             -X POST
-             -H "$KEY_HEADER"
-             -d "$PAYLOAD"
-             -s
-             https://api.reflect.run/v1/suites/git-test/executions
+        run: |
+          curl -X POST \
+               -H "$KEY_HEADER" \
+               -d "$PAYLOAD" \
+               -s \
+               https://api.reflect.run/v1/suites/git-test/executions
