@@ -5,7 +5,7 @@ on:
 
 env:
   KEY_HEADER: "X-API-KEY: tHyCZqoH2yap6fXheRYVg4F4RKSgEk6R11zZkLNy"
-  PAYLOAD: "{ \"gitHub\": { \"owner\": \"<OWNER>\", \"repo\": \"<REPO>\", \"sha\": \"${{ github.event.pull_request.head.sha }}\" } }"
+  PAYLOAD: "{ \"gitHub\": { \"owner\": \"sankar7466\", \"repo\": \"Reflect\", \"sha\": \"${{ github.event.pull_request.head.sha }}\" } }"
 
 jobs:
   run-tests:
