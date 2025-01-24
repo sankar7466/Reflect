@@ -4,7 +4,7 @@ on:
     branches: [ master ]
 
 env:
-  KEY_HEADER: "X-API-KEY:"X-API-KEY: ${{ secrets.REFLECT_API_KEY }}"
+  KEY_HEADER: "X-API-KEY: "X-API-KEY: ${{ secrets.REFLECT_API_KEY }}"
   PAYLOAD: "{ \"gitHub\": { \"owner\": \"<OWNER>\", \"repo\": \"<REPO>\", \"sha\": \"${{ github.event.pull_request.head.sha }}\" } }"
 
 jobs:
