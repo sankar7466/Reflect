@@ -7,8 +7,8 @@ env:
   KEY_HEADER: "X-API-KEY: tHyCZqoH2yap6fXheRYVg4F4RKSgEk6R11zZkLNy"
   PAYLOAD: "{
   "gitHub": {
-    "owner": "technovigno",
-    "repo": "open-wrench-web-app",
+    "owner": "sankar7466",
+    "repo": "Reflect",
     "sha": "${{ github.event.pull_request.head.sha }}"
   }
 }"
