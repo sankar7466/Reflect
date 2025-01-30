@@ -19,7 +19,7 @@ jobs:
               "gitHub": {
                 "owner": "sankar7466",
                 "repo": "Reflect",
-                "sha": "'${{ github.sha }}'"
+                "sha": "'${{ github.event.pull_request.head.sha }}'"
               }
             }' \
             -s https://api.reflect.run/v1/suites/git-test/executions
